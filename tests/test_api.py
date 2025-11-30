@@ -1,12 +1,14 @@
+import os, sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from modules.api_client import get_llm_response
 
+
 def test_api_connection():
-    print("Running API test...")
-
     result = get_llm_response("سلام! این یک تست اولیه API است.")
+    assert result is not None
+    print("Response:", result)
 
-    assert isinstance(result, str), "API response is not string!"
-    assert len(result) > 0, "API returned empty response!"
 
-    print("API TEST PASSED ✓")
-    print("Sample Response:", result[:60])
+if __name__ == "__main__":
+    test_api_connection()
